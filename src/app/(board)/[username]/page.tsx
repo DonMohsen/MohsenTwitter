@@ -3,9 +3,14 @@ import Image from "@/components/Image";
 import { prisma } from "@/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+type Props = {
+  params: Promise<{ username: string }>
+}
 
-const UserPage = async({params}:{params:{username:string}}) => {
-  const user=await prisma.user.findUnique({where:{username:params.username}})
+const UserPage = async( { params }: Props,) => {
+    const username = ((await params).username)
+
+  const user=await prisma.user.findUnique({where:{username}})
   if (!user) {
     return notFound
   }
