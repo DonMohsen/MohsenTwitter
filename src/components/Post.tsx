@@ -130,7 +130,7 @@ console.log("org post=============>",originalPost);
                 path={originalPost.img}
                 alt=""
                 w={600}
-                h={originalPost.imgHeight || 600}
+                h={originalPost.imgHeight||600}
                 className={originalPost.isSensitive ? "blur-3xl" : ""}
               />
             </div>
