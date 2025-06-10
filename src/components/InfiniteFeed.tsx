@@ -42,7 +42,7 @@ const InfiniteFeed = ({ userProfileId }: { userProfileId?: string }) => {
         <Post
         
         key={post.id} 
-        // post={post}
+        post={post}
         
         />
       ))}

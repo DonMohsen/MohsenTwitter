@@ -4,8 +4,8 @@ import PostInfo from "./PostInfo";
 import PostInteractions from "./PostInteractions";
 import Video from "./Video";
 import Link from "next/link";
-import { Post as PostType } from "../../generated/prisma";
 import { format } from "timeago.js";
+import { Post as PostType} from "../../generated/prisma";
 
 type UserSummary = {
   displayName: string | null;
@@ -33,12 +33,13 @@ const Post = ({
   type?: "status" | "comment";
   post: PostWithDetails;
 }) => {
-  const originalPost = post?.rePost || post;
+  const originalPost = post.rePost || post;
+console.log("org post=============>",originalPost);
 
   return (
     <div className="p-4 border-y-[1px] border-borderGray">
       {/* POST TYPE */}
-      {post?.rePostId && (
+      {post.rePostId && (
         <div className="flex items-center gap-2 text-sm text-textGray mb-2 from-bold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +65,7 @@ const Post = ({
           } relative w-10 h-10 rounded-full overflow-hidden -z-10`}
         >
           <Image
-            path={originalPost?.user?.img || "general/noAvatar.png"}
+            path={originalPost.user.img || "general/noAvatar.png"}
             alt=""
             w={100}
             h={100}
@@ -77,7 +78,7 @@ const Post = ({
           {/* TOP */}
           <div className="w-full flex justify-between">
             <Link
-              href={`/${originalPost?.user?.username}`}
+              href={`/${originalPost.user.username}`}
               className="flex gap-4"
             >
               <div
@@ -86,7 +87,7 @@ const Post = ({
                 } relative w-10 h-10 rounded-full overflow-hidden`}
               >
                 <Image
-                  path={originalPost?.user?.img || "general/noAvatar.png"}
+                  path={originalPost.user.img || "general/noAvatar.png"}
                   alt=""
                   w={100}
                   h={100}
@@ -99,16 +100,16 @@ const Post = ({
                 }`}
               >
                 <h1 className="text-md font-bold">
-                  {originalPost?.user?.displayName}
+                  {originalPost.user.displayName}
                 </h1>
                 <span
                   className={`text-textGray ${type === "status" && "text-sm"}`}
                 >
-                  @{originalPost?.user?.username}
+                  @{originalPost.user.username}
                 </span>
                 {type !== "status" && (
                   <span className="text-textGray">
-                    {format(originalPost?.createdAt)}
+                    {format(originalPost.createdAt)}
                   </span>
                 )}
               </div>
@@ -117,13 +118,13 @@ const Post = ({
           </div>
           {/* TEXT & MEDIA */}
           <Link
-            href={`/${originalPost?.user?.username}/status/${originalPost?.id}`}
+            href={`/${originalPost.user.username}/status/${originalPost.id}`}
           >
             <p className={`${type === "status" && "text-lg"}`}>
-              {originalPost?.desc}
+              {originalPost.desc}
             </p>
           </Link>
-          {originalPost?.img && (
+          {originalPost.img && (
             <div className="overflow-hidden">
               <Image
                 path={originalPost.img}
@@ -134,25 +135,25 @@ const Post = ({
               />
             </div>
           )}
-          {originalPost?.video && (
+          {originalPost.video && (
             <div className="rounded-lg overflow-hidden">
               <Video
-                path={originalPost?.video}
-                className={originalPost?.isSensitive ? "blur-3xl" : ""}
+                path={originalPost.video}
+                className={originalPost.isSensitive ? "blur-3xl" : ""}
               />
             </div>
           )}
           {type === "status" && (
             <span className="text-textGray">8:41 PM · Dec 5, 2024</span>
           )}
-          {/* <PostInteractions
+          <PostInteractions
             username={originalPost.user.username}
             postId={originalPost.id}
             count={originalPost._count}
             isLiked={!!originalPost.likes.length}
             isRePosted={!!originalPost.rePosts.length}
             isSaved={!!originalPost.saves.length}
-          /> */}
+          />
         </div>
       </div>
     </div>
