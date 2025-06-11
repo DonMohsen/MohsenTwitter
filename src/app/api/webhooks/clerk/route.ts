@@ -86,6 +86,25 @@ export async function POST(req: Request) {
       });
     }
   }
+if (eventType === "user.updated") {
+  try {
+    // Update the user info in your DB
+    await prisma.user.update({
+      where: { id: evt.data.id },
+      data: {
+        username: JSON.parse(body).data.username,
+        email: JSON.parse(body).data.email_addresses[0].email_address,
+        img: JSON.parse(body).data.profile_image_url || "",
+      },
+    });
+    return new Response("User updated", { status: 200 });
+  } catch (err) {
+    console.log(err);
+    return new Response("Error: Failed to update user!", {
+      status: 500,
+    });
+  }
+}
 
   return new Response("Webhook received", { status: 200 });
 }
