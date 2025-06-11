@@ -4,6 +4,7 @@ import Image from "./Image";
 // import Notification from "./Notification";
 import { currentUser } from "@clerk/nextjs/server";
 import Logout from "./Logout";
+import { UserButton, UserProfile } from "@clerk/nextjs";
 
 const menuList = [
   {
@@ -124,7 +125,7 @@ console.log("The log from leftbar::====::>>>>>>>",user);
           {/* USER */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 relative rounded-full overflow-hidden">
+              {/* <div className="w-10 h-10 relative rounded-full overflow-hidden">
                 <Image
                   src={user?.imageUrl}
                   alt=""
@@ -132,7 +133,8 @@ console.log("The log from leftbar::====::>>>>>>>",user);
                   h={100}
                   tr={true}
                 />
-              </div>
+                </div> */}
+                <UserButton/>
               <div className="hidden xxl:flex flex-col">
                 <span className="font-bold">{user?.username}</span>
                 <span className="text-sm text-textGray">@{user?.username}</span>
