@@ -64,13 +64,15 @@ console.log("org post=============>",originalPost);
             type === "status" && "hidden"
           } relative w-10 h-10 rounded-full overflow-hidden -z-10`}
         >
+          {originalPost.user&&
           <Image
-            path={originalPost.user.img || "general/noAvatar.png"}
-            alt=""
-            w={100}
-            h={100}
-            tr={true}
+          path={originalPost?.user?.img || "general/noAvatar.png"}
+          alt=""
+          w={100}
+          h={100}
+          tr={true}
           />
+        }
         </div>
 
         {/* CONTENT */}
@@ -87,7 +89,7 @@ console.log("org post=============>",originalPost);
                 } relative w-10 h-10 rounded-full overflow-hidden`}
               >
                 <Image
-                  path={originalPost.user.img || "general/noAvatar.png"}
+                  path={originalPost?.user?.img || "general/noAvatar.png"}
                   alt=""
                   w={100}
                   h={100}

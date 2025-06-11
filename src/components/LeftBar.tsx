@@ -70,6 +70,7 @@ const menuList = [
 
 const LeftBar = async () => {
   const user = await currentUser();
+console.log("The log from leftbar::====::>>>>>>>",user);
 
   return (
     <div className="h-screen sticky top-0 flex flex-col justify-between pt-2 pb-8">

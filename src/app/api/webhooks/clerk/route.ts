@@ -53,7 +53,7 @@ export async function POST(req: Request) {
   const { id } = evt.data;
   const eventType = evt.type;
   console.log(`Received webhook with ID ${id} and event type of ${eventType}`);
-  console.log("Webhook payload:", body);
+  console.log("Webhook payload####################################################################", body);
 
   if (eventType === "user.created") {
     try {
@@ -62,7 +62,8 @@ export async function POST(req: Request) {
           id: evt.data.id,
           username: JSON.parse(body).data.username,
           email: JSON.parse(body).data.email_addresses[0].email_address,
-          img: JSON.parse(body).image_url || "" 
+          img: JSON.parse(body).data.profile_image_url
+ || "" 
         },
       });
       return new Response("User created", { status: 200 });
