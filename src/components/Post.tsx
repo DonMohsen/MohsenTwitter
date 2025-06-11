@@ -1,11 +1,12 @@
 import { imagekit } from "@/utils";
-import Image from "./Image";
+import  ImageKit from "./Image";
 import PostInfo from "./PostInfo";
 import PostInteractions from "./PostInteractions";
 import Video from "./Video";
 import Link from "next/link";
 import { format } from "timeago.js";
 import { Post as PostType} from "../../generated/prisma";
+import Image from "next/image";
 
 type UserSummary = {
   displayName: string | null;
@@ -66,11 +67,12 @@ console.log("org post=============>",originalPost);
         >
           {originalPost.user&&
           <Image
-          path={originalPost?.user?.img || "general/noAvatar.png"}
+          src={originalPost?.user?.img || "general/noAvatar.png"}
+          // path={originalPost?.user?.img || "general/noAvatar.png"}
           alt=""
-          w={100}
-          h={100}
-          tr={true}
+          width={100}
+          height={100}
+          // tr={true}
           />
         }
         </div>
@@ -89,11 +91,11 @@ console.log("org post=============>",originalPost);
                 } relative w-10 h-10 rounded-full overflow-hidden`}
               >
                 <Image
-                  path={originalPost?.user?.img || "general/noAvatar.png"}
+          src={originalPost?.user?.img || "general/noAvatar.png"}
                   alt=""
-                  w={100}
-                  h={100}
-                  tr={true}
+                  width={100}
+                  height={100}
+                  // tr={true}
                 />
               </div>
               <div
@@ -128,7 +130,7 @@ console.log("org post=============>",originalPost);
           </Link>
           {originalPost.img && (
             <div className="overflow-hidden">
-              <Image
+              <ImageKit
                 path={originalPost.img}
                 alt=""
                 w={600}
