@@ -52,7 +52,8 @@ const UserPage = async ({
           {/* AVATAR */}
           <div className="w-1/5 aspect-square rounded-full overflow-hidden border-4 border-black bg-gray-300 absolute left-4 -translate-y-1/2">
             <Image
-              path={user.img || "general/noAvatar.png"}
+              // path={user.img || "general/noAvatar.png"}
+              src={user.img || "general/noAvatar.png"}
               alt=""
               w={100}
               h={100}
