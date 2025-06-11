@@ -12,7 +12,13 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.clerk.dev",
         port: "",
-        pathname: "/oauth_google/**", // allows all images under /oauth_google/
+        // pathname: "/oauth_google/**", // allows all images under /oauth_google/
+      },
+      {
+        protocol: "https",
+        hostname: "img.clerk.com",
+        port: "",
+        // pathname: "/oauth_google/**", // allows all images under /oauth_google/
       },
     ],
   },
