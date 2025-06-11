@@ -77,7 +77,7 @@ export async function POST(req: Request) {
 
   if (eventType === "user.deleted") {
     try {
-      await prisma.user.delete({ where: { id: evt.data.id } });
+      await prisma.user.deleteMany({ where: { id: evt.data.id } });
       return new Response("User deleted", { status: 200 });
     } catch (err) {
       console.log(err);
